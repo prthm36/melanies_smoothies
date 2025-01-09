@@ -32,19 +32,19 @@ if ingredients_list:
     for fruit_chosen in ingredients_list:
         ingredients_string += fruit_chosen +' '
         search_on=pd_df.loc[pd_df['FRUIT_NAME'] == fruit_chosen, 'SEARCH_ON'].iloc[0]
-        st.write('The search value for ', fruit_chosen,' is ', search_on, '.')
+        # st.write('The search value for ', fruit_chosen,' is ', search_on, '.')
         st.subheader(fruit_chosen + 'Nutrition Information')
         
-        # # st.write (ingredients_string)
-    # my_insert_stmt = """ insert into smoothies.public.orders(ingredients, name_on_order)
-    #         values ('""" + ingredients_string + """','""" + name_on_order+"""')"""
+        st.write (ingredients_string)
+    my_insert_stmt = """ insert into smoothies.public.orders(ingredients, name_on_order)
+            values ('""" + ingredients_string + """','""" + name_on_order+"""')"""
 
-    # # st.write(my_insert_stmt)
-    # time_to_insert = st.button("SUBMIT ORDER")
+    st.write(my_insert_stmt)
+    time_to_insert = st.button("SUBMIT ORDER")
 
-    # if time_to_insert :
-    #     session.sql(my_insert_stmt).collect()
-    #     st.success('Your Smoothie is ordered!', icon="✅")
+    if time_to_insert :
+        session.sql(my_insert_stmt).collect()
+        st.success('Your Smoothie is ordered!', icon="✅")
 
     # st.write(my_insert_stmt)
     # st.stop()
